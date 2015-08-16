@@ -1,0 +1,455 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C23E2381B803FC8002D5CAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2371B803FC8002D5CAD /* main.m */; };
+		1C23E23B1B803FC8002D5CAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E23A1B803FC8002D5CAD /* AppDelegate.m */; };
+		1C23E2431B803FC8002D5CAD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C23E2421B803FC8002D5CAD /* Images.xcassets */; };
+		1C23E2461B803FC8002D5CAD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C23E2441B803FC8002D5CAD /* LaunchScreen.xib */; };
+		1C23E2721B8043AD002D5CAD /* CH2ONavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E26C1B8043AD002D5CAD /* CH2ONavigationController.m */; };
+		1C23E2731B8043AD002D5CAD /* CH2ONavigationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E26E1B8043AD002D5CAD /* CH2ONavigationManager.m */; };
+		1C23E2741B8043AD002D5CAD /* CH2ORootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2701B8043AD002D5CAD /* CH2ORootViewController.m */; };
+		1C23E2751B8043AD002D5CAD /* CH2ORootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C23E2711B8043AD002D5CAD /* CH2ORootViewController.xib */; };
+		1C23E2781B8043D1002D5CAD /* CH2OBLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2771B8043D1002D5CAD /* CH2OBLEManager.m */; };
+		1C23E27C1B805768002D5CAD /* CH2OHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E27A1B805768002D5CAD /* CH2OHistoryViewController.m */; };
+		1C23E27D1B805768002D5CAD /* CH2OHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C23E27B1B805768002D5CAD /* CH2OHistoryViewController.xib */; };
+		1C23E2981B805DF2002D5CAD /* CH2OLineChartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2961B805DF2002D5CAD /* CH2OLineChartTableViewCell.m */; };
+		1C23E2991B805DF2002D5CAD /* CH2OLineChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C23E2971B805DF2002D5CAD /* CH2OLineChartTableViewCell.xib */; };
+		1C23E2B31B80638D002D5CAD /* EColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E29C1B80638D002D5CAD /* EColor.m */; };
+		1C23E2B41B80638D002D5CAD /* EColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E29E1B80638D002D5CAD /* EColumn.m */; };
+		1C23E2B51B80638D002D5CAD /* EColumnChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2A01B80638D002D5CAD /* EColumnChart.m */; };
+		1C23E2B61B80638D002D5CAD /* EColumnChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2A21B80638D002D5CAD /* EColumnChartLabel.m */; };
+		1C23E2B71B80638D002D5CAD /* EColumnDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2A41B80638D002D5CAD /* EColumnDataModel.m */; };
+		1C23E2B81B80638D002D5CAD /* EFloatBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2A61B80638D002D5CAD /* EFloatBox.m */; };
+		1C23E2B91B80638D002D5CAD /* ELine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2A81B80638D002D5CAD /* ELine.m */; };
+		1C23E2BA1B80638D002D5CAD /* ELineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2AA1B80638D002D5CAD /* ELineChart.m */; };
+		1C23E2BB1B80638D002D5CAD /* ELineChartDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2AC1B80638D002D5CAD /* ELineChartDataModel.m */; };
+		1C23E2BC1B80638D002D5CAD /* EPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2AE1B80638D002D5CAD /* EPieChart.m */; };
+		1C23E2BD1B80638D002D5CAD /* EViewSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2B01B80638D002D5CAD /* EViewSwitcher.m */; };
+		1C23E2BE1B80638D002D5CAD /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2B21B80638D002D5CAD /* UICountingLabel.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1C23E2321B803FC8002D5CAD /* CH2ODetector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CH2ODetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C23E2361B803FC8002D5CAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C23E2371B803FC8002D5CAD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1C23E2391B803FC8002D5CAD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1C23E23A1B803FC8002D5CAD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1C23E2421B803FC8002D5CAD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1C23E2451B803FC8002D5CAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		1C23E26B1B8043AD002D5CAD /* CH2ONavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CH2ONavigationController.h; sourceTree = "<group>"; };
+		1C23E26C1B8043AD002D5CAD /* CH2ONavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CH2ONavigationController.m; sourceTree = "<group>"; };
+		1C23E26D1B8043AD002D5CAD /* CH2ONavigationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CH2ONavigationManager.h; sourceTree = "<group>"; };
+		1C23E26E1B8043AD002D5CAD /* CH2ONavigationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CH2ONavigationManager.m; sourceTree = "<group>"; };
+		1C23E26F1B8043AD002D5CAD /* CH2ORootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CH2ORootViewController.h; sourceTree = "<group>"; };
+		1C23E2701B8043AD002D5CAD /* CH2ORootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CH2ORootViewController.m; sourceTree = "<group>"; };
+		1C23E2711B8043AD002D5CAD /* CH2ORootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CH2ORootViewController.xib; sourceTree = "<group>"; };
+		1C23E2761B8043D1002D5CAD /* CH2OBLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CH2OBLEManager.h; sourceTree = "<group>"; };
+		1C23E2771B8043D1002D5CAD /* CH2OBLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CH2OBLEManager.m; sourceTree = "<group>"; };
+		1C23E2791B805768002D5CAD /* CH2OHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CH2OHistoryViewController.h; sourceTree = "<group>"; };
+		1C23E27A1B805768002D5CAD /* CH2OHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CH2OHistoryViewController.m; sourceTree = "<group>"; };
+		1C23E27B1B805768002D5CAD /* CH2OHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CH2OHistoryViewController.xib; sourceTree = "<group>"; };
+		1C23E2951B805DF2002D5CAD /* CH2OLineChartTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CH2OLineChartTableViewCell.h; sourceTree = "<group>"; };
+		1C23E2961B805DF2002D5CAD /* CH2OLineChartTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CH2OLineChartTableViewCell.m; sourceTree = "<group>"; };
+		1C23E2971B805DF2002D5CAD /* CH2OLineChartTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CH2OLineChartTableViewCell.xib; sourceTree = "<group>"; };
+		1C23E29B1B80638D002D5CAD /* EColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EColor.h; sourceTree = "<group>"; };
+		1C23E29C1B80638D002D5CAD /* EColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EColor.m; sourceTree = "<group>"; };
+		1C23E29D1B80638D002D5CAD /* EColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EColumn.h; sourceTree = "<group>"; };
+		1C23E29E1B80638D002D5CAD /* EColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EColumn.m; sourceTree = "<group>"; };
+		1C23E29F1B80638D002D5CAD /* EColumnChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EColumnChart.h; sourceTree = "<group>"; };
+		1C23E2A01B80638D002D5CAD /* EColumnChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EColumnChart.m; sourceTree = "<group>"; };
+		1C23E2A11B80638D002D5CAD /* EColumnChartLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EColumnChartLabel.h; sourceTree = "<group>"; };
+		1C23E2A21B80638D002D5CAD /* EColumnChartLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EColumnChartLabel.m; sourceTree = "<group>"; };
+		1C23E2A31B80638D002D5CAD /* EColumnDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EColumnDataModel.h; sourceTree = "<group>"; };
+		1C23E2A41B80638D002D5CAD /* EColumnDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EColumnDataModel.m; sourceTree = "<group>"; };
+		1C23E2A51B80638D002D5CAD /* EFloatBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFloatBox.h; sourceTree = "<group>"; };
+		1C23E2A61B80638D002D5CAD /* EFloatBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFloatBox.m; sourceTree = "<group>"; };
+		1C23E2A71B80638D002D5CAD /* ELine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELine.h; sourceTree = "<group>"; };
+		1C23E2A81B80638D002D5CAD /* ELine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELine.m; sourceTree = "<group>"; };
+		1C23E2A91B80638D002D5CAD /* ELineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELineChart.h; sourceTree = "<group>"; };
+		1C23E2AA1B80638D002D5CAD /* ELineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELineChart.m; sourceTree = "<group>"; };
+		1C23E2AB1B80638D002D5CAD /* ELineChartDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELineChartDataModel.h; sourceTree = "<group>"; };
+		1C23E2AC1B80638D002D5CAD /* ELineChartDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELineChartDataModel.m; sourceTree = "<group>"; };
+		1C23E2AD1B80638D002D5CAD /* EPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPieChart.h; sourceTree = "<group>"; };
+		1C23E2AE1B80638D002D5CAD /* EPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPieChart.m; sourceTree = "<group>"; };
+		1C23E2AF1B80638D002D5CAD /* EViewSwitcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EViewSwitcher.h; sourceTree = "<group>"; };
+		1C23E2B01B80638D002D5CAD /* EViewSwitcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EViewSwitcher.m; sourceTree = "<group>"; };
+		1C23E2B11B80638D002D5CAD /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
+		1C23E2B21B80638D002D5CAD /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1C23E22F1B803FC8002D5CAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C23E2291B803FC8002D5CAD = {
+			isa = PBXGroup;
+			children = (
+				1C23E2341B803FC8002D5CAD /* CH2ODetector */,
+				1C23E2331B803FC8002D5CAD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1C23E2331B803FC8002D5CAD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1C23E2321B803FC8002D5CAD /* CH2ODetector.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1C23E2341B803FC8002D5CAD /* CH2ODetector */ = {
+			isa = PBXGroup;
+			children = (
+				1C23E2681B804340002D5CAD /* ThirdParty */,
+				1C23E25C1B8040F7002D5CAD /* Class */,
+				1C23E2391B803FC8002D5CAD /* AppDelegate.h */,
+				1C23E23A1B803FC8002D5CAD /* AppDelegate.m */,
+				1C23E2421B803FC8002D5CAD /* Images.xcassets */,
+				1C23E2441B803FC8002D5CAD /* LaunchScreen.xib */,
+				1C23E2351B803FC8002D5CAD /* Supporting Files */,
+			);
+			path = CH2ODetector;
+			sourceTree = "<group>";
+		};
+		1C23E2351B803FC8002D5CAD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1C23E2361B803FC8002D5CAD /* Info.plist */,
+				1C23E2371B803FC8002D5CAD /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1C23E25C1B8040F7002D5CAD /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				1C23E2911B805AD8002D5CAD /* Widget */,
+				1C23E2691B8043AD002D5CAD /* BLEManager */,
+				1C23E26A1B8043AD002D5CAD /* Controllers */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		1C23E2681B804340002D5CAD /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				1C23E29A1B80638D002D5CAD /* EChart */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		1C23E2691B8043AD002D5CAD /* BLEManager */ = {
+			isa = PBXGroup;
+			children = (
+				1C23E2761B8043D1002D5CAD /* CH2OBLEManager.h */,
+				1C23E2771B8043D1002D5CAD /* CH2OBLEManager.m */,
+			);
+			path = BLEManager;
+			sourceTree = "<group>";
+		};
+		1C23E26A1B8043AD002D5CAD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1C23E26B1B8043AD002D5CAD /* CH2ONavigationController.h */,
+				1C23E26C1B8043AD002D5CAD /* CH2ONavigationController.m */,
+				1C23E26D1B8043AD002D5CAD /* CH2ONavigationManager.h */,
+				1C23E26E1B8043AD002D5CAD /* CH2ONavigationManager.m */,
+				1C23E26F1B8043AD002D5CAD /* CH2ORootViewController.h */,
+				1C23E2701B8043AD002D5CAD /* CH2ORootViewController.m */,
+				1C23E2711B8043AD002D5CAD /* CH2ORootViewController.xib */,
+				1C23E2791B805768002D5CAD /* CH2OHistoryViewController.h */,
+				1C23E27A1B805768002D5CAD /* CH2OHistoryViewController.m */,
+				1C23E27B1B805768002D5CAD /* CH2OHistoryViewController.xib */,
+				1C23E2951B805DF2002D5CAD /* CH2OLineChartTableViewCell.h */,
+				1C23E2961B805DF2002D5CAD /* CH2OLineChartTableViewCell.m */,
+				1C23E2971B805DF2002D5CAD /* CH2OLineChartTableViewCell.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1C23E2911B805AD8002D5CAD /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		1C23E29A1B80638D002D5CAD /* EChart */ = {
+			isa = PBXGroup;
+			children = (
+				1C23E29B1B80638D002D5CAD /* EColor.h */,
+				1C23E29C1B80638D002D5CAD /* EColor.m */,
+				1C23E29D1B80638D002D5CAD /* EColumn.h */,
+				1C23E29E1B80638D002D5CAD /* EColumn.m */,
+				1C23E29F1B80638D002D5CAD /* EColumnChart.h */,
+				1C23E2A01B80638D002D5CAD /* EColumnChart.m */,
+				1C23E2A11B80638D002D5CAD /* EColumnChartLabel.h */,
+				1C23E2A21B80638D002D5CAD /* EColumnChartLabel.m */,
+				1C23E2A31B80638D002D5CAD /* EColumnDataModel.h */,
+				1C23E2A41B80638D002D5CAD /* EColumnDataModel.m */,
+				1C23E2A51B80638D002D5CAD /* EFloatBox.h */,
+				1C23E2A61B80638D002D5CAD /* EFloatBox.m */,
+				1C23E2A71B80638D002D5CAD /* ELine.h */,
+				1C23E2A81B80638D002D5CAD /* ELine.m */,
+				1C23E2A91B80638D002D5CAD /* ELineChart.h */,
+				1C23E2AA1B80638D002D5CAD /* ELineChart.m */,
+				1C23E2AB1B80638D002D5CAD /* ELineChartDataModel.h */,
+				1C23E2AC1B80638D002D5CAD /* ELineChartDataModel.m */,
+				1C23E2AD1B80638D002D5CAD /* EPieChart.h */,
+				1C23E2AE1B80638D002D5CAD /* EPieChart.m */,
+				1C23E2AF1B80638D002D5CAD /* EViewSwitcher.h */,
+				1C23E2B01B80638D002D5CAD /* EViewSwitcher.m */,
+				1C23E2B11B80638D002D5CAD /* UICountingLabel.h */,
+				1C23E2B21B80638D002D5CAD /* UICountingLabel.m */,
+			);
+			path = EChart;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1C23E2311B803FC8002D5CAD /* CH2ODetector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C23E2551B803FC9002D5CAD /* Build configuration list for PBXNativeTarget "CH2ODetector" */;
+			buildPhases = (
+				1C23E22E1B803FC8002D5CAD /* Sources */,
+				1C23E22F1B803FC8002D5CAD /* Frameworks */,
+				1C23E2301B803FC8002D5CAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CH2ODetector;
+			productName = CH2ODetector;
+			productReference = 1C23E2321B803FC8002D5CAD /* CH2ODetector.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1C23E22A1B803FC8002D5CAD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = wadahana;
+				TargetAttributes = {
+					1C23E2311B803FC8002D5CAD = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
+			};
+			buildConfigurationList = 1C23E22D1B803FC8002D5CAD /* Build configuration list for PBXProject "CH2ODetector" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1C23E2291B803FC8002D5CAD;
+			productRefGroup = 1C23E2331B803FC8002D5CAD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C23E2311B803FC8002D5CAD /* CH2ODetector */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1C23E2301B803FC8002D5CAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C23E2991B805DF2002D5CAD /* CH2OLineChartTableViewCell.xib in Resources */,
+				1C23E2751B8043AD002D5CAD /* CH2ORootViewController.xib in Resources */,
+				1C23E2461B803FC8002D5CAD /* LaunchScreen.xib in Resources */,
+				1C23E2431B803FC8002D5CAD /* Images.xcassets in Resources */,
+				1C23E27D1B805768002D5CAD /* CH2OHistoryViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1C23E22E1B803FC8002D5CAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C23E2B81B80638D002D5CAD /* EFloatBox.m in Sources */,
+				1C23E27C1B805768002D5CAD /* CH2OHistoryViewController.m in Sources */,
+				1C23E23B1B803FC8002D5CAD /* AppDelegate.m in Sources */,
+				1C23E2B31B80638D002D5CAD /* EColor.m in Sources */,
+				1C23E2731B8043AD002D5CAD /* CH2ONavigationManager.m in Sources */,
+				1C23E2981B805DF2002D5CAD /* CH2OLineChartTableViewCell.m in Sources */,
+				1C23E2BA1B80638D002D5CAD /* ELineChart.m in Sources */,
+				1C23E2BC1B80638D002D5CAD /* EPieChart.m in Sources */,
+				1C23E2B51B80638D002D5CAD /* EColumnChart.m in Sources */,
+				1C23E2B71B80638D002D5CAD /* EColumnDataModel.m in Sources */,
+				1C23E2B41B80638D002D5CAD /* EColumn.m in Sources */,
+				1C23E2741B8043AD002D5CAD /* CH2ORootViewController.m in Sources */,
+				1C23E2721B8043AD002D5CAD /* CH2ONavigationController.m in Sources */,
+				1C23E2381B803FC8002D5CAD /* main.m in Sources */,
+				1C23E2B91B80638D002D5CAD /* ELine.m in Sources */,
+				1C23E2781B8043D1002D5CAD /* CH2OBLEManager.m in Sources */,
+				1C23E2BB1B80638D002D5CAD /* ELineChartDataModel.m in Sources */,
+				1C23E2BE1B80638D002D5CAD /* UICountingLabel.m in Sources */,
+				1C23E2BD1B80638D002D5CAD /* EViewSwitcher.m in Sources */,
+				1C23E2B61B80638D002D5CAD /* EColumnChartLabel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1C23E2441B803FC8002D5CAD /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C23E2451B803FC8002D5CAD /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1C23E2531B803FC9002D5CAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1C23E2541B803FC9002D5CAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1C23E2561B803FC9002D5CAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CH2ODetector/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1C23E2571B803FC9002D5CAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CH2ODetector/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C23E22D1B803FC8002D5CAD /* Build configuration list for PBXProject "CH2ODetector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C23E2531B803FC9002D5CAD /* Debug */,
+				1C23E2541B803FC9002D5CAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C23E2551B803FC9002D5CAD /* Build configuration list for PBXNativeTarget "CH2ODetector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C23E2561B803FC9002D5CAD /* Debug */,
+				1C23E2571B803FC9002D5CAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1C23E22A1B803FC8002D5CAD /* Project object */;
+}
