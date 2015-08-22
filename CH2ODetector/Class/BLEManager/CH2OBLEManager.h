@@ -7,9 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+
+#define kBLEManagerNotification (@"kBLEManagerNotification")
 
 @interface CH2OBLEManager : NSObject
 
-+ (instancetype)shareInstance;
 
++ (instancetype)shareInstance;
+- (BOOL)start;
+- (void)stop;
+- (void)connectToPeripheral:(CBPeripheral*)peripheral;
+- (NSArray*)discoverDevList;
+- (NSArray*)connectedDevList;
+- (CBPeripheral*)currentPeripheral;
+- (void)setCurrentPeripheral:(CBPeripheral *)peripheral;
 @end

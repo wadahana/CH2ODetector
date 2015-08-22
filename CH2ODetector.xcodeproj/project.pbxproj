@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C21CAEB1B88468700271484 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C21CAEA1B88468700271484 /* CoreBluetooth.framework */; };
 		1C23E2381B803FC8002D5CAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2371B803FC8002D5CAD /* main.m */; };
 		1C23E23B1B803FC8002D5CAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E23A1B803FC8002D5CAD /* AppDelegate.m */; };
 		1C23E2431B803FC8002D5CAD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C23E2421B803FC8002D5CAD /* Images.xcassets */; };
@@ -32,9 +33,22 @@
 		1C23E2BC1B80638D002D5CAD /* EPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2AE1B80638D002D5CAD /* EPieChart.m */; };
 		1C23E2BD1B80638D002D5CAD /* EViewSwitcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2B01B80638D002D5CAD /* EViewSwitcher.m */; };
 		1C23E2BE1B80638D002D5CAD /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2B21B80638D002D5CAD /* UICountingLabel.m */; };
+		1C8AEF441B8870DB0020AF8E /* CH2ODevListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8AEF421B8870DB0020AF8E /* CH2ODevListViewController.m */; };
+		1C8AEF451B8870DB0020AF8E /* CH2ODevListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C8AEF431B8870DB0020AF8E /* CH2ODevListViewController.xib */; };
+		1C8AEF531B88AFCD0020AF8E /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C8AEF481B88AFCD0020AF8E /* 37x-Checkmark.png */; };
+		1C8AEF541B88AFCD0020AF8E /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C8AEF491B88AFCD0020AF8E /* 37x-Checkmark@2x.png */; };
+		1C8AEF551B88AFCD0020AF8E /* 37x-Checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C8AEF4A1B88AFCD0020AF8E /* 37x-Checkmark@3x.png */; };
+		1C8AEF561B88AFCD0020AF8E /* 37x-Error.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C8AEF4B1B88AFCD0020AF8E /* 37x-Error.png */; };
+		1C8AEF571B88AFCD0020AF8E /* 37x-Error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C8AEF4C1B88AFCD0020AF8E /* 37x-Error@2x.png */; };
+		1C8AEF581B88AFCD0020AF8E /* 37x-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C8AEF4D1B88AFCD0020AF8E /* 37x-success.png */; };
+		1C8AEF591B88AFCD0020AF8E /* 37x-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C8AEF4E1B88AFCD0020AF8E /* 37x-success@2x.png */; };
+		1C8AEF5A1B88AFCD0020AF8E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8AEF501B88AFCD0020AF8E /* MBProgressHUD.m */; };
+		1C8AEF5B1B88AFCD0020AF8E /* MBProgressHUDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8AEF521B88AFCD0020AF8E /* MBProgressHUDManager.m */; };
+		1C8AEF5E1B88B2E90020AF8E /* CBPeripheral+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C8AEF5D1B88B2E90020AF8E /* CBPeripheral+Utility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C21CAEA1B88468700271484 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		1C23E2321B803FC8002D5CAD /* CH2ODetector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CH2ODetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C23E2361B803FC8002D5CAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C23E2371B803FC8002D5CAD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -81,6 +95,22 @@
 		1C23E2B01B80638D002D5CAD /* EViewSwitcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EViewSwitcher.m; sourceTree = "<group>"; };
 		1C23E2B11B80638D002D5CAD /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
 		1C23E2B21B80638D002D5CAD /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
+		1C8AEF411B8870DB0020AF8E /* CH2ODevListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CH2ODevListViewController.h; sourceTree = "<group>"; };
+		1C8AEF421B8870DB0020AF8E /* CH2ODevListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CH2ODevListViewController.m; sourceTree = "<group>"; };
+		1C8AEF431B8870DB0020AF8E /* CH2ODevListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CH2ODevListViewController.xib; sourceTree = "<group>"; };
+		1C8AEF481B88AFCD0020AF8E /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
+		1C8AEF491B88AFCD0020AF8E /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
+		1C8AEF4A1B88AFCD0020AF8E /* 37x-Checkmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@3x.png"; sourceTree = "<group>"; };
+		1C8AEF4B1B88AFCD0020AF8E /* 37x-Error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Error.png"; sourceTree = "<group>"; };
+		1C8AEF4C1B88AFCD0020AF8E /* 37x-Error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Error@2x.png"; sourceTree = "<group>"; };
+		1C8AEF4D1B88AFCD0020AF8E /* 37x-success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-success.png"; sourceTree = "<group>"; };
+		1C8AEF4E1B88AFCD0020AF8E /* 37x-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-success@2x.png"; sourceTree = "<group>"; };
+		1C8AEF4F1B88AFCD0020AF8E /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		1C8AEF501B88AFCD0020AF8E /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		1C8AEF511B88AFCD0020AF8E /* MBProgressHUDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUDManager.h; sourceTree = "<group>"; };
+		1C8AEF521B88AFCD0020AF8E /* MBProgressHUDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUDManager.m; sourceTree = "<group>"; };
+		1C8AEF5C1B88B2E90020AF8E /* CBPeripheral+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBPeripheral+Utility.h"; sourceTree = "<group>"; };
+		1C8AEF5D1B88B2E90020AF8E /* CBPeripheral+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBPeripheral+Utility.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C21CAEB1B88468700271484 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +128,7 @@
 		1C23E2291B803FC8002D5CAD = {
 			isa = PBXGroup;
 			children = (
+				1C21CAEA1B88468700271484 /* CoreBluetooth.framework */,
 				1C23E2341B803FC8002D5CAD /* CH2ODetector */,
 				1C23E2331B803FC8002D5CAD /* Products */,
 			);
@@ -146,6 +178,7 @@
 		1C23E2681B804340002D5CAD /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				1C8AEF461B88AFCD0020AF8E /* MBProgressHUD */,
 				1C23E29A1B80638D002D5CAD /* EChart */,
 			);
 			path = ThirdParty;
@@ -156,6 +189,8 @@
 			children = (
 				1C23E2761B8043D1002D5CAD /* CH2OBLEManager.h */,
 				1C23E2771B8043D1002D5CAD /* CH2OBLEManager.m */,
+				1C8AEF5C1B88B2E90020AF8E /* CBPeripheral+Utility.h */,
+				1C8AEF5D1B88B2E90020AF8E /* CBPeripheral+Utility.m */,
 			);
 			path = BLEManager;
 			sourceTree = "<group>";
@@ -176,6 +211,9 @@
 				1C23E2951B805DF2002D5CAD /* CH2OLineChartTableViewCell.h */,
 				1C23E2961B805DF2002D5CAD /* CH2OLineChartTableViewCell.m */,
 				1C23E2971B805DF2002D5CAD /* CH2OLineChartTableViewCell.xib */,
+				1C8AEF411B8870DB0020AF8E /* CH2ODevListViewController.h */,
+				1C8AEF421B8870DB0020AF8E /* CH2ODevListViewController.m */,
+				1C8AEF431B8870DB0020AF8E /* CH2ODevListViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -216,6 +254,32 @@
 				1C23E2B21B80638D002D5CAD /* UICountingLabel.m */,
 			);
 			path = EChart;
+			sourceTree = "<group>";
+		};
+		1C8AEF461B88AFCD0020AF8E /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				1C8AEF471B88AFCD0020AF8E /* Images */,
+				1C8AEF4F1B88AFCD0020AF8E /* MBProgressHUD.h */,
+				1C8AEF501B88AFCD0020AF8E /* MBProgressHUD.m */,
+				1C8AEF511B88AFCD0020AF8E /* MBProgressHUDManager.h */,
+				1C8AEF521B88AFCD0020AF8E /* MBProgressHUDManager.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		1C8AEF471B88AFCD0020AF8E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1C8AEF481B88AFCD0020AF8E /* 37x-Checkmark.png */,
+				1C8AEF491B88AFCD0020AF8E /* 37x-Checkmark@2x.png */,
+				1C8AEF4A1B88AFCD0020AF8E /* 37x-Checkmark@3x.png */,
+				1C8AEF4B1B88AFCD0020AF8E /* 37x-Error.png */,
+				1C8AEF4C1B88AFCD0020AF8E /* 37x-Error@2x.png */,
+				1C8AEF4D1B88AFCD0020AF8E /* 37x-success.png */,
+				1C8AEF4E1B88AFCD0020AF8E /* 37x-success@2x.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,9 +340,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C23E2991B805DF2002D5CAD /* CH2OLineChartTableViewCell.xib in Resources */,
+				1C8AEF561B88AFCD0020AF8E /* 37x-Error.png in Resources */,
+				1C8AEF541B88AFCD0020AF8E /* 37x-Checkmark@2x.png in Resources */,
+				1C8AEF571B88AFCD0020AF8E /* 37x-Error@2x.png in Resources */,
 				1C23E2751B8043AD002D5CAD /* CH2ORootViewController.xib in Resources */,
+				1C8AEF531B88AFCD0020AF8E /* 37x-Checkmark.png in Resources */,
 				1C23E2461B803FC8002D5CAD /* LaunchScreen.xib in Resources */,
+				1C8AEF551B88AFCD0020AF8E /* 37x-Checkmark@3x.png in Resources */,
+				1C8AEF591B88AFCD0020AF8E /* 37x-success@2x.png in Resources */,
 				1C23E2431B803FC8002D5CAD /* Images.xcassets in Resources */,
+				1C8AEF451B8870DB0020AF8E /* CH2ODevListViewController.xib in Resources */,
+				1C8AEF581B88AFCD0020AF8E /* 37x-success.png in Resources */,
 				1C23E27D1B805768002D5CAD /* CH2OHistoryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,7 +363,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C23E2B81B80638D002D5CAD /* EFloatBox.m in Sources */,
+				1C8AEF5E1B88B2E90020AF8E /* CBPeripheral+Utility.m in Sources */,
 				1C23E27C1B805768002D5CAD /* CH2OHistoryViewController.m in Sources */,
+				1C8AEF5B1B88AFCD0020AF8E /* MBProgressHUDManager.m in Sources */,
 				1C23E23B1B803FC8002D5CAD /* AppDelegate.m in Sources */,
 				1C23E2B31B80638D002D5CAD /* EColor.m in Sources */,
 				1C23E2731B8043AD002D5CAD /* CH2ONavigationManager.m in Sources */,
@@ -305,7 +379,9 @@
 				1C23E2721B8043AD002D5CAD /* CH2ONavigationController.m in Sources */,
 				1C23E2381B803FC8002D5CAD /* main.m in Sources */,
 				1C23E2B91B80638D002D5CAD /* ELine.m in Sources */,
+				1C8AEF5A1B88AFCD0020AF8E /* MBProgressHUD.m in Sources */,
 				1C23E2781B8043D1002D5CAD /* CH2OBLEManager.m in Sources */,
+				1C8AEF441B8870DB0020AF8E /* CH2ODevListViewController.m in Sources */,
 				1C23E2BB1B80638D002D5CAD /* ELineChartDataModel.m in Sources */,
 				1C23E2BE1B80638D002D5CAD /* UICountingLabel.m in Sources */,
 				1C23E2BD1B80638D002D5CAD /* EViewSwitcher.m in Sources */,
@@ -363,7 +439,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -401,7 +477,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -448,6 +524,7 @@
 				1C23E2571B803FC9002D5CAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

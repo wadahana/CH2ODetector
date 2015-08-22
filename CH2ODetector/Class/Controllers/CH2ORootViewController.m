@@ -5,7 +5,7 @@
 //  Created by 吴昕 on 15/8/16.
 //  Copyright (c) 2015年 wadahana. All rights reserved.
 //
-
+#import "CH2OBLEManager.h"
 #import "CH2ORootViewController.h"
 #import "CH2ONavigationManager.h"
 
@@ -18,14 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"实时浓度";
-//    _infoLabel.layer.borderColor = [UIColor grayColor].CGColor;
-//    _infoLabel.layer.borderWidth = 0.5;
-//    _infoLabel.layer.cornerRadius = 5;
-  
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"扫描" style:UIBarButtonItemStylePlain target:self action:@selector(onScan:)];
+    self.navigationItem.rightBarButtonItem = rightButton;
     _historyButton.layer.borderColor = [UIColor blueColor].CGColor;
     _historyButton.layer.borderWidth = 0.5;
     _historyButton.layer.cornerRadius = 5;
     // Do any additional setup after loading the view from its nib.
+    [[CH2OBLEManager shareInstance] start];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +41,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)onScan:(id)sender {
+  [[CH2ONavigationManager shareInstance] navigateToDevListView];
+}
 
 - (IBAction)onHistory:(id)sender {
   [[CH2ONavigationManager shareInstance] navigateToHistoryView];

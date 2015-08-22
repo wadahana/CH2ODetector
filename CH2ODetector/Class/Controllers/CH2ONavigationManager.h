@@ -23,4 +23,6 @@
 
 - (void)navigateToHistoryView;
 
+- (void)navigateToDevListView;
+
 @end

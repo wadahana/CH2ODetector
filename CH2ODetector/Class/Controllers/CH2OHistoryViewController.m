@@ -66,11 +66,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"LineChartCell";
+    static NSString *cellIdentifier = @"kLineChartCell";
     
     CH2OLineChartTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(!cell) {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"CH2OLineChartTableViewCellt" owner:nil options:nil] firstObject];
+      [tableView registerNib:[UINib nibWithNibName:@"CH2OLineChartTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
+      cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+
     }
     return cell;
 }

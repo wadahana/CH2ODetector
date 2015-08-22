@@ -9,6 +9,7 @@
 #import "CH2ONavigationManager.h"
 #import "CH2ORootViewController.h"
 #import "CH2OHistoryViewController.h"
+#import "CH2ODevListViewController.h"
 
 @interface CH2ONavigationManager () <UINavigationControllerDelegate>
 {
@@ -58,6 +59,12 @@
 
 - (void)navigateToHistoryView {
   CH2OHistoryViewController *controller = [[CH2OHistoryViewController alloc] initWithNibName:@"CH2OHistoryViewController" bundle:nil];
+  [_navigationController pushViewController:controller animated:YES];
+}
+
+
+- (void)navigateToDevListView {
+  CH2ODevListViewController *controller = [[CH2ODevListViewController alloc] initWithNibName:@"CH2ODevListViewController" bundle:nil];
   [_navigationController pushViewController:controller animated:YES];
 }
 
