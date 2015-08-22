@@ -106,7 +106,7 @@
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:kBLEManagerNotification
                                                         object:nil
-                                                      userInfo:@{@"type":@"kDiscoverPeripheral",
+                                                      userInfo:@{@"type":kBLEPeripheralDiscoveryNotify,
                                                            @"peripheral":peripheral}];
   }
 }
@@ -121,7 +121,7 @@
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:kBLEManagerNotification
                                                         object:nil
-                                                      userInfo:@{@"type":@"kDidConnectPeripheral",
+                                                      userInfo:@{@"type":kBLEPeripheralConnectedNotify,
                                                            @"peripheral":peripheral}];
   }
 }
@@ -130,14 +130,28 @@
   if ([_connectedDevList containsObject:peripheral]) { // remove from connected list
     [_connectedDevList removeObject:peripheral];
   }
+  [[NSNotificationCenter defaultCenter] postNotificationName:kBLEManagerNotification
+                                                      object:nil
+                                                    userInfo:@{@"type":kBLEPeripheralDisconnectNotify,
+                                                               @"peripheral":peripheral}];
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
   if ([_connectedDevList containsObject:peripheral]) { // remove from connected list
     [_connectedDevList removeObject:peripheral];
   }
-
+  [[NSNotificationCenter defaultCenter] postNotificationName:kBLEManagerNotification
+                                                      object:nil
+                                                    userInfo:@{@"type":kBLEPeripheralDisconnectNotify,
+                                                               @"peripheral":peripheral}];
 }
 #pragma mark - CBPeripheralDelegate
 
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
+
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
+
+}
 @end

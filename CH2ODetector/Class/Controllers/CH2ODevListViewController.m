@@ -63,7 +63,13 @@
   NSLog(@"onBLEManagerNotification ... ");
   [_hudManager hide];
   NSDictionary* args = notification.userInfo;
-  [self.tableView reloadData];
+  NSString* type = [args objectForKey:@"type"];
+  if ([type isEqual:kBLEPeripheralDiscoveryNotify] ||
+      [type isEqual:kBLEPeripheralConnectedNotify] ||
+      [type isEqual:kBLEPeripheralDisconnectNotify]) {
+    [self.tableView reloadData];
+  }
+  return;
 }
 
 #pragma mark - Table view data source

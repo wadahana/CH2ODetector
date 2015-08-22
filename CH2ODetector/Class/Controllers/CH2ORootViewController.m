@@ -8,12 +8,15 @@
 #import "CH2OBLEManager.h"
 #import "CH2ORootViewController.h"
 #import "CH2ONavigationManager.h"
+#import "MBProgressHUDManager.h"
 
 @interface CH2ORootViewController ()
 
 @end
 
-@implementation CH2ORootViewController
+@implementation CH2ORootViewController {
+  MBProgressHUDManager* _hudManager;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,7 +27,21 @@
     _historyButton.layer.borderWidth = 0.5;
     _historyButton.layer.cornerRadius = 5;
     // Do any additional setup after loading the view from its nib.
+  
     [[CH2OBLEManager shareInstance] start];
+  
+    _hudManager = [[MBProgressHUDManager alloc] initWithView:self.view];
+    _hudManager.HUD.margin = 10.f;
+    _hudManager.HUD.opacity = 0.6;
+    _hudManager.HUD.yOffset = 0;
+    _hudManager.HUD.dimBackground = NO;
+    
+    
+    [[NSNotificationCenter defaultCenter]  addObserver:self
+                                              selector:@selector(onBLEManagerNotification:)
+                                                  name:kBLEManagerNotification
+                                                object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,6 +58,16 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)onBLEManagerNotification : (NSNotification*)notification {
+  NSLog(@"onBLEManagerNotification ... ");
+  NSDictionary* args = notification.userInfo;
+  NSString* type = [args objectForKey:@"type"];
+  if ([type isEqual:kBLEPeripheralRecvValueNotify]) {
+    NSLog(@"detector value change ..");
+  }
+  return;
+}
 
 - (void)onScan:(id)sender {
   [[CH2ONavigationManager shareInstance] navigateToDevListView];
