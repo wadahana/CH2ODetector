@@ -13,4 +13,6 @@ typedef void(^ConnectedBlock_t)();
 
 @interface CBPeripheral (Utility)
 @property (nonatomic, strong) ConnectedBlock_t connectedBlock;
+
+
 @end

@@ -52,32 +52,42 @@
 }
 
 - (void)refresh {
-  [_hudManager showIndeterminateWithMessage:@"加载中...\n" duration:-1];
-  _connectedDevList = [[CH2OBLEManager shareInstance] connectedDevList];
-  _discoverDevList = [[CH2OBLEManager shareInstance] discoverDevList];
-  [self.tableView reloadData];
-  [_hudManager hide];
+    [_hudManager showIndeterminateWithMessage:@"加载中...\n" duration:-1];
+    _connectedDevList = [[CH2OBLEManager shareInstance] connectedDevList];
+    _discoverDevList = [[CH2OBLEManager shareInstance] discoverDevList];
+    [self.tableView reloadData];
+    [_hudManager hide];
 }
 
 - (void)onBLEManagerNotification : (NSNotification*)notification {
-  NSLog(@"onBLEManagerNotification ... ");
-  [_hudManager hide];
-  NSDictionary* args = notification.userInfo;
-  NSString* type = [args objectForKey:@"type"];
-  if ([type isEqual:kBLEPeripheralDiscoveryNotify] ||
-      [type isEqual:kBLEPeripheralConnectedNotify] ||
-      [type isEqual:kBLEPeripheralDisconnectNotify]) {
-    [self.tableView reloadData];
-  }
-  return;
+    NSLog(@"onBLEManagerNotification ... ");
+
+    NSDictionary* args = notification.userInfo;
+    NSString* type = [args objectForKey:@"type"];
+    NSLog(@"notificaiton type: %@", type);
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+         
+        [_hudManager hide];
+        if ([type isEqual:kBLEPeripheralDiscoveryNotify]) {
+        } else if ([type isEqual:kBLEPeripheralConnectedNotify]) {
+            [_hudManager showMessage:@"链接成功!" duration:1];
+        } else if ([type isEqual:kBLEPeripheralDisconnectNotify]) {
+            [_hudManager showMessage:@"链接失败" duration:1];
+        }
+        [self.tableView reloadData];
+        
+    });
+    
+    return;
 }
 
 #pragma mark - Table view data source
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-  if (section == 0) {
-    return @"已发现传感器:";
-  }
-  return @"已连接传感器:";
+    if (section == 0) {
+        return @"已发现传感器:";
+    }
+    return @"已连接传感器:";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -87,37 +97,44 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-  if (section == 0) {
-    return _discoverDevList.count;
-  }
-  return _connectedDevList.count;
+    if (section == 0) {
+        return _discoverDevList.count;
+    }
+    return _connectedDevList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSInteger row = indexPath.row;
-  NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    NSInteger section = indexPath.section;
   
-  if (section == 0) { // discover sensor
-    NSString* cellIdentifier = @"kDiscoverCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-      cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    if (section == 0) {
+        
+        // discover sensor
+        NSString* cellIdentifier = @"kDiscoverCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        }
+        CBPeripheral* peripheral = _discoverDevList[row];
+        cell.textLabel.text = peripheral.name;
+        cell.detailTextLabel.text = peripheral.identifier.UUIDString;
+        return cell;
+    
+    } else {
+        
+        // connection sensor
+        NSString* cellIdentifier = @"kConnectedCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        }
+        CBPeripheral* peripheral = _connectedDevList[row];
+        cell.textLabel.text = peripheral.name;
+        cell.detailTextLabel.text = peripheral.identifier.UUIDString;
+        return cell;
+        
     }
-    CBPeripheral* peripheral = _discoverDevList[row];
-    cell.textLabel.text = peripheral.name;
-    cell.detailTextLabel.text = peripheral.identifier.UUIDString;
-    return cell;
-  } else { // connection sensor
-    NSString* cellIdentifier = @"kConnectedCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-      cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-    }
-    CBPeripheral* peripheral = _connectedDevList[row];
-    cell.textLabel.text = peripheral.name;
-    cell.detailTextLabel.text = peripheral.identifier.UUIDString;
-    return cell;
-  }
+    return nil;
 }
 
 
@@ -167,9 +184,7 @@
     CBPeripheral* peripheral = _discoverDevList[row];
     if (peripheral.state == CBPeripheralStateDisconnected) {
       [[CH2OBLEManager shareInstance] connectToPeripheral:peripheral];
-      [_hudManager showIndeterminateWithMessage:@"正在连接传感器" duration:15 complection:^(void){
-        NSLog(@"");
-      }];
+      [_hudManager showIndeterminateWithMessage:@"正在连接传感器" duration:-1];
     }
   } else {
     CBPeripheral* peripheral = _connectedDevList[row];
