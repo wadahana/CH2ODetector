@@ -61,10 +61,21 @@
 
 - (void)onBLEManagerNotification : (NSNotification*)notification {
   NSLog(@"onBLEManagerNotification ... ");
-  NSDictionary* args = notification.userInfo;
-  NSString* type = [args objectForKey:@"type"];
+  NSDictionary* userInfo = notification.userInfo;
+  NSString* type = [userInfo objectForKey:@"type"];
   if ([type isEqual:kBLEPeripheralRecvValueNotify]) {
     NSLog(@"detector value change ..");
+      NSNumber * value = [userInfo objectForKey:@"value"];
+      if (value) {
+          uint16_t v = [value unsignedShortValue];
+          double ppa = ((double)v) / 1000.0;
+          double vol = ppa * 30.0 / 22.4;
+          dispatch_async(dispatch_get_main_queue(), ^{
+              self.ppaLabel.text = [NSString stringWithFormat:@"%0.4lf ppm", ppa];
+              self.volLabel.text = [NSString stringWithFormat:@"%0.4lf mg/m3", vol];
+          });
+      }
+      
   }
   return;
 }

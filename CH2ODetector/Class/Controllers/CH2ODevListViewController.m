@@ -67,7 +67,6 @@
     NSLog(@"notificaiton type: %@", type);
     
     dispatch_async(dispatch_get_main_queue(), ^{
-         
         [_hudManager hide];
         if ([type isEqual:kBLEPeripheralDiscoveryNotify]) {
         } else if ([type isEqual:kBLEPeripheralConnectedNotify]) {
@@ -76,7 +75,6 @@
             [_hudManager showMessage:@"链接失败" duration:1];
         }
         [self.tableView reloadData];
-        
     });
     
     return;
@@ -108,7 +106,6 @@
     NSInteger section = indexPath.section;
   
     if (section == 0) {
-        
         // discover sensor
         NSString* cellIdentifier = @"kDiscoverCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];

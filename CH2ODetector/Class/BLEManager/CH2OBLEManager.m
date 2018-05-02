@@ -172,14 +172,33 @@ const static NSString* kUartServiceUUID = @"FFE0";
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
-    NSLog(@"didDiscoverCharacteristicsForService -> error:%@",error);
+    NSLog(@"didDiscoverCharacteristicsForService error: %@", error ? error.localizedDescription : @"null");
     for (CBCharacteristic *characteristic in service.characteristics) {
-        NSLog(@"Characteristic found with UUID: %@\n", characteristic.UUID);
+        NSLog(@"Service UUID: %@; Characteristic found with UUID: %@\n", service.UUID, characteristic.UUID);
+        //[peripheral readValueForCharacteristic:characteristic];
+        [peripheral setNotifyValue: YES forCharacteristic: characteristic] ;
     }
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error {
-    NSLog(@"update value .. ");
+    if (error) {
+        NSLog(@"update value, error: %@", error ? error.localizedDescription : @"null");
+    }
+    NSData * data = characteristic.value;
+    if (data && data.length == 9) {
+     //   NSLog(@"%@", data);
+        uint8_t * ptr = (uint8_t *)data.bytes;
+        if (ptr[0] == 0xff && ptr[1] == 0x17) {
+            uint16_t value = (ptr[4] << 8) | ptr[5];
+            NSLog(@"value: %d", value);
+            [[NSNotificationCenter defaultCenter] postNotificationName:kBLEManagerNotification
+                                                                object:nil
+                                                              userInfo:@{@"type":kBLEPeripheralRecvValueNotify,
+                                                                         @"peripheral":peripheral,
+                                                                         @"value":@(value)
+                                                                         }];
+        }
+    }
 }
 
 @end
