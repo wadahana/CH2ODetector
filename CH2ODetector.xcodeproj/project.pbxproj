@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C00B92E20B26DC4000B0869 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C00B92D20B26DC4000B0869 /* AVFoundation.framework */; };
+		1C00B93020B272FA000B0869 /* bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C00B92F20B272FA000B0869 /* bgm.mp3 */; };
+		1C03A6DE20B127AE003B8FAE /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C03A6D420B127AE003B8FAE /* FMDatabaseQueue.m */; };
+		1C03A6DF20B127AE003B8FAE /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C03A6D720B127AE003B8FAE /* FMDatabaseAdditions.m */; };
+		1C03A6E020B127AE003B8FAE /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C03A6D820B127AE003B8FAE /* FMDatabase.m */; };
+		1C03A6E120B127AE003B8FAE /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C03A6DC20B127AE003B8FAE /* FMDatabasePool.m */; };
+		1C03A6E220B127AE003B8FAE /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C03A6DD20B127AE003B8FAE /* FMResultSet.m */; };
+		1C03A6E520B16973003B8FAE /* CH2ODBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C03A6E420B16973003B8FAE /* CH2ODBHelper.m */; };
 		1C21CAEB1B88468700271484 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C21CAEA1B88468700271484 /* CoreBluetooth.framework */; };
 		1C23E2381B803FC8002D5CAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E2371B803FC8002D5CAD /* main.m */; };
 		1C23E23B1B803FC8002D5CAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C23E23A1B803FC8002D5CAD /* AppDelegate.m */; };
@@ -48,6 +56,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C00B92D20B26DC4000B0869 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1C00B92F20B272FA000B0869 /* bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm.mp3; sourceTree = "<group>"; };
+		1C03A6D320B127AE003B8FAE /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		1C03A6D420B127AE003B8FAE /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		1C03A6D520B127AE003B8FAE /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		1C03A6D620B127AE003B8FAE /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		1C03A6D720B127AE003B8FAE /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		1C03A6D820B127AE003B8FAE /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		1C03A6D920B127AE003B8FAE /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		1C03A6DA20B127AE003B8FAE /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		1C03A6DB20B127AE003B8FAE /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		1C03A6DC20B127AE003B8FAE /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		1C03A6DD20B127AE003B8FAE /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		1C03A6E320B16973003B8FAE /* CH2ODBHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CH2ODBHelper.h; sourceTree = "<group>"; };
+		1C03A6E420B16973003B8FAE /* CH2ODBHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CH2ODBHelper.m; sourceTree = "<group>"; };
 		1C21CAEA1B88468700271484 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		1C23E2321B803FC8002D5CAD /* CH2ODetector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CH2ODetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C23E2361B803FC8002D5CAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C00B92E20B26DC4000B0869 /* AVFoundation.framework in Frameworks */,
 				1C21CAEB1B88468700271484 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,12 +149,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C00B92C20B26DC4000B0869 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C00B92D20B26DC4000B0869 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1C03A6D220B127AE003B8FAE /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				1C03A6D320B127AE003B8FAE /* FMDatabase.h */,
+				1C03A6D420B127AE003B8FAE /* FMDatabaseQueue.m */,
+				1C03A6D520B127AE003B8FAE /* FMResultSet.h */,
+				1C03A6D620B127AE003B8FAE /* FMDatabasePool.h */,
+				1C03A6D720B127AE003B8FAE /* FMDatabaseAdditions.m */,
+				1C03A6D820B127AE003B8FAE /* FMDatabase.m */,
+				1C03A6D920B127AE003B8FAE /* FMDatabaseQueue.h */,
+				1C03A6DA20B127AE003B8FAE /* FMDB.h */,
+				1C03A6DB20B127AE003B8FAE /* FMDatabaseAdditions.h */,
+				1C03A6DC20B127AE003B8FAE /* FMDatabasePool.m */,
+				1C03A6DD20B127AE003B8FAE /* FMResultSet.m */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
 		1C23E2291B803FC8002D5CAD = {
 			isa = PBXGroup;
 			children = (
 				1C21CAEA1B88468700271484 /* CoreBluetooth.framework */,
 				1C23E2341B803FC8002D5CAD /* CH2ODetector */,
 				1C23E2331B803FC8002D5CAD /* Products */,
+				1C00B92C20B26DC4000B0869 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +196,7 @@
 		1C23E2341B803FC8002D5CAD /* CH2ODetector */ = {
 			isa = PBXGroup;
 			children = (
+				1C00B92F20B272FA000B0869 /* bgm.mp3 */,
 				1C23E2681B804340002D5CAD /* ThirdParty */,
 				1C23E25C1B8040F7002D5CAD /* Class */,
 				1C23E2391B803FC8002D5CAD /* AppDelegate.h */,
@@ -168,7 +220,6 @@
 		1C23E25C1B8040F7002D5CAD /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				1C23E2911B805AD8002D5CAD /* Widget */,
 				1C23E2691B8043AD002D5CAD /* BLEManager */,
 				1C23E26A1B8043AD002D5CAD /* Controllers */,
 			);
@@ -178,6 +229,7 @@
 		1C23E2681B804340002D5CAD /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				1C03A6D220B127AE003B8FAE /* FMDB */,
 				1C8AEF461B88AFCD0020AF8E /* MBProgressHUD */,
 				1C23E29A1B80638D002D5CAD /* EChart */,
 			);
@@ -191,6 +243,8 @@
 				1C23E2771B8043D1002D5CAD /* CH2OBLEManager.m */,
 				1C8AEF5C1B88B2E90020AF8E /* CBPeripheral+Utility.h */,
 				1C8AEF5D1B88B2E90020AF8E /* CBPeripheral+Utility.m */,
+				1C03A6E320B16973003B8FAE /* CH2ODBHelper.h */,
+				1C03A6E420B16973003B8FAE /* CH2ODBHelper.m */,
 			);
 			path = BLEManager;
 			sourceTree = "<group>";
@@ -216,13 +270,6 @@
 				1C8AEF431B8870DB0020AF8E /* CH2ODevListViewController.xib */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		1C23E2911B805AD8002D5CAD /* Widget */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Widget;
 			sourceTree = "<group>";
 		};
 		1C23E29A1B80638D002D5CAD /* EChart */ = {
@@ -315,6 +362,11 @@
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 8D983AWF36;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -354,6 +406,7 @@
 				1C8AEF451B8870DB0020AF8E /* CH2ODevListViewController.xib in Resources */,
 				1C8AEF581B88AFCD0020AF8E /* 37x-success.png in Resources */,
 				1C23E27D1B805768002D5CAD /* CH2OHistoryViewController.xib in Resources */,
+				1C00B93020B272FA000B0869 /* bgm.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,20 +427,26 @@
 				1C23E2981B805DF2002D5CAD /* CH2OLineChartTableViewCell.m in Sources */,
 				1C23E2BA1B80638D002D5CAD /* ELineChart.m in Sources */,
 				1C23E2BC1B80638D002D5CAD /* EPieChart.m in Sources */,
+				1C03A6DE20B127AE003B8FAE /* FMDatabaseQueue.m in Sources */,
 				1C23E2B51B80638D002D5CAD /* EColumnChart.m in Sources */,
+				1C03A6E020B127AE003B8FAE /* FMDatabase.m in Sources */,
 				1C23E2B71B80638D002D5CAD /* EColumnDataModel.m in Sources */,
 				1C23E2B41B80638D002D5CAD /* EColumn.m in Sources */,
 				1C23E2741B8043AD002D5CAD /* CH2ORootViewController.m in Sources */,
 				1C23E2721B8043AD002D5CAD /* CH2ONavigationController.m in Sources */,
 				1C23E2381B803FC8002D5CAD /* main.m in Sources */,
+				1C03A6E220B127AE003B8FAE /* FMResultSet.m in Sources */,
 				1C23E2B91B80638D002D5CAD /* ELine.m in Sources */,
 				1C8AEF5A1B88AFCD0020AF8E /* MBProgressHUD.m in Sources */,
 				1C23E2781B8043D1002D5CAD /* CH2OBLEManager.m in Sources */,
 				1C8AEF441B8870DB0020AF8E /* CH2ODevListViewController.m in Sources */,
+				1C03A6DF20B127AE003B8FAE /* FMDatabaseAdditions.m in Sources */,
 				1C23E2BB1B80638D002D5CAD /* ELineChartDataModel.m in Sources */,
 				1C23E2BE1B80638D002D5CAD /* UICountingLabel.m in Sources */,
+				1C03A6E120B127AE003B8FAE /* FMDatabasePool.m in Sources */,
 				1C23E2BD1B80638D002D5CAD /* EViewSwitcher.m in Sources */,
 				1C23E2B61B80638D002D5CAD /* EColumnChartLabel.m in Sources */,
+				1C03A6E520B16973003B8FAE /* CH2ODBHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (nonatomic, strong) NSTimer * timer;
+@property (nonatomic, assign) BOOL recording;
 
 @end
 

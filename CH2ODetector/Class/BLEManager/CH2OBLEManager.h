@@ -14,16 +14,19 @@
 #define kBLEPeripheralConnectedNotify     (@"kBLEPeripheralConnected")
 #define kBLEPeripheralDisconnectNotify    (@"kBLEPeripheralDisconnectedNotify")
 #define kBLEPeripheralRecvValueNotify     (@"kBLEPeripheralRecvNotify")
-
+#define kBLESQLiteFileOpenFail            (@"kBLESQLiteFileOpenFail")
 @interface CH2OBLEManager : NSObject
 
+@property (nonatomic, assign) double ppaValue;
+@property (nonatomic, assign) double volValue;
 
 + (instancetype)shareInstance;
 - (BOOL)start;
 - (void)stop;
 - (void)connectToPeripheral:(CBPeripheral*)peripheral;
-- (NSArray*)discoverDevList;
-- (NSArray*)connectedDevList;
+//- (NSArray*)discoverDevList;
+//- (NSArray*)connectedDevList;
 - (CBPeripheral*)currentPeripheral;
-- (void)setCurrentPeripheral:(CBPeripheral *)peripheral;
+- (void)attachPeripheral:(CBPeripheral *)peripheral;
+
 @end

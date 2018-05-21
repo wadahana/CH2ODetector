@@ -12,31 +12,32 @@
 #import "MBProgressHUDManager.h"
 
 @interface CH2ODevListViewController ()
-
+@property (nonatomic, strong) CBPeripheral * connectedPeripheral;
+@property (nonatomic, strong) NSMutableArray<CBPeripheral *> * discoverPeripheraArray;
+@property (nonatomic, strong) MBProgressHUDManager * hudManager;
 @end
 
 @implementation CH2ODevListViewController {
-  NSArray* _connectedDevList;
-  NSArray* _discoverDevList;
-  MBProgressHUDManager* _hudManager;
+
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"传感器列表";
     self.navigationItem.leftBarButtonItem.title = @"返回";
-  
+    self.connectedPeripheral = nil;
+    [[CH2OBLEManager shareInstance] start];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    _hudManager = [[MBProgressHUDManager alloc] initWithView:self.view];
-    _hudManager.HUD.margin = 10.f;
-    _hudManager.HUD.opacity = 0.6;
-    _hudManager.HUD.yOffset = 0;
-    _hudManager.HUD.dimBackground = NO;
-  
+    self.hudManager = [[MBProgressHUDManager alloc] initWithView:self.view];
+    self.hudManager.HUD.margin = 10.f;
+    self.hudManager.HUD.opacity = 0.6;
+    self.hudManager.HUD.yOffset = 0;
+    self.hudManager.HUD.dimBackground = NO;
   
     [[NSNotificationCenter defaultCenter]  addObserver:self
                                               selector:@selector(onBLEManagerNotification:)
@@ -53,8 +54,7 @@
 
 - (void)refresh {
     [_hudManager showIndeterminateWithMessage:@"加载中...\n" duration:-1];
-    _connectedDevList = [[CH2OBLEManager shareInstance] connectedDevList];
-    _discoverDevList = [[CH2OBLEManager shareInstance] discoverDevList];
+    self.discoverPeripheraArray = [NSMutableArray new];
     [self.tableView reloadData];
     [_hudManager hide];
 }
@@ -62,17 +62,27 @@
 - (void)onBLEManagerNotification : (NSNotification*)notification {
     NSLog(@"onBLEManagerNotification ... ");
 
-    NSDictionary* args = notification.userInfo;
-    NSString* type = [args objectForKey:@"type"];
+    NSDictionary* useinfo = notification.userInfo;
+    NSString* type = [useinfo objectForKey:@"type"];
     NSLog(@"notificaiton type: %@", type);
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [_hudManager hide];
+        [self.hudManager hide];
         if ([type isEqual:kBLEPeripheralDiscoveryNotify]) {
+            CBPeripheral * peripheral = [useinfo objectForKey:@"peripheral"];
+            if (peripheral) {
+                [self.discoverPeripheraArray addObject:peripheral];
+                [self.tableView reloadData];
+            }
         } else if ([type isEqual:kBLEPeripheralConnectedNotify]) {
-            [_hudManager showMessage:@"链接成功!" duration:1];
+            CBPeripheral * peripheral = [useinfo objectForKey:@"peripheral"];
+            if (peripheral) {
+                [self.discoverPeripheraArray removeObject:peripheral];
+            }
+            [self.hudManager showMessage:@"链接成功!" duration:1];
+           
         } else if ([type isEqual:kBLEPeripheralDisconnectNotify]) {
-            [_hudManager showMessage:@"链接失败" duration:1];
+            [self.hudManager showMessage:@"链接失败" duration:1];
         }
         [self.tableView reloadData];
     });
@@ -96,9 +106,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     if (section == 0) {
-        return _discoverDevList.count;
+        return self.discoverPeripheraArray.count;
     }
-    return _connectedDevList.count;
+    self.connectedPeripheral = [CH2OBLEManager shareInstance].currentPeripheral;
+    if (self.connectedPeripheral) {
+        return 1;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -112,24 +126,21 @@
         if (!cell) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         }
-        CBPeripheral* peripheral = _discoverDevList[row];
+        CBPeripheral * peripheral = self.discoverPeripheraArray[row];
         cell.textLabel.text = peripheral.name;
         cell.detailTextLabel.text = peripheral.identifier.UUIDString;
         return cell;
     
     } else {
-        
-        // connection sensor
+        // connected sensor
         NSString* cellIdentifier = @"kConnectedCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         }
-        CBPeripheral* peripheral = _connectedDevList[row];
-        cell.textLabel.text = peripheral.name;
-        cell.detailTextLabel.text = peripheral.identifier.UUIDString;
+        cell.textLabel.text = self.connectedPeripheral.name;
+        cell.detailTextLabel.text = self.connectedPeripheral.identifier.UUIDString;
         return cell;
-        
     }
     return nil;
 }
@@ -174,24 +185,17 @@
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSLog(@"didSelectRowAtIndexPath");
-  NSInteger row = indexPath.row;
-  NSInteger section = indexPath.section;
-  if (section == 0) { // discover sensor
-    CBPeripheral* peripheral = _discoverDevList[row];
-    if (peripheral.state == CBPeripheralStateDisconnected) {
-      [[CH2OBLEManager shareInstance] connectToPeripheral:peripheral];
-      [_hudManager showIndeterminateWithMessage:@"正在连接传感器" duration:-1];
+    NSLog(@"didSelectRowAtIndexPath");
+    NSInteger row = indexPath.row;
+    NSInteger section = indexPath.section;
+    if (section == 0) { // discover sensor
+        CBPeripheral * peripheral = self.discoverPeripheraArray[row];
+        if (peripheral.state == CBPeripheralStateDisconnected) {
+            [[CH2OBLEManager shareInstance] connectToPeripheral:peripheral];
+            [_hudManager showIndeterminateWithMessage:@"正在连接传感器" duration:-1];
+        }
     }
-  } else {
-    CBPeripheral* peripheral = _connectedDevList[row];
-    [[CH2OBLEManager shareInstance] setCurrentPeripheral:peripheral];
-    NSString* msg = [NSString stringWithFormat:@"选择传感器:%@", peripheral.name];
-    [_hudManager showMessage:msg duration:1 complection:^{
-      [[CH2ONavigationManager shareInstance] navigateBack];
-    }];
-
-  }
+    return;
 }
 
 

@@ -10,10 +10,13 @@
 
 @interface CH2ORootViewController : UIViewController
 
-@property (nonatomic, weak) IBOutlet UILabel* ppaLabel;
-@property (nonatomic, weak) IBOutlet UILabel* volLabel;
-@property (nonatomic, weak) IBOutlet UILabel* infoLabel;
-@property (nonatomic, weak) IBOutlet UIButton* historyButton;
+@property (nonatomic, weak) IBOutlet UILabel * ppaLabel;
+@property (nonatomic, weak) IBOutlet UILabel * volLabel;
+@property (nonatomic, weak) IBOutlet UILabel * infoLabel;
+@property (nonatomic, weak) IBOutlet UIButton * historyButton;
+@property (nonatomic, weak) IBOutlet UIButton * recordButton;
+@property (nonatomic, weak) IBOutlet UIButton * clearButton;
+
 - (IBAction)onHistory:(id)sender;
 
 @end

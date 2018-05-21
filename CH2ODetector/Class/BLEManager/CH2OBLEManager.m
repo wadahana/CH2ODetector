@@ -14,14 +14,16 @@ const static NSString* kUartServiceUUID = @"FFE0";
 @interface CH2OBLEManager () <CBCentralManagerDelegate,
                               CBPeripheralDelegate>
 
+@property (nonatomic, strong) NSMutableArray * connectedDevList;
+@property (nonatomic, strong) CBCentralManager * bleManager;
+@property (nonatomic, strong) CBPeripheral * currentPeripheral;
+
 @end
 
 @implementation CH2OBLEManager {
-    NSMutableArray    *_discoverDevList;
-    NSMutableArray    *_connectedDevList;
-    CBCentralManager  *_bldManager;
+    
     dispatch_queue_t  _bleQueue;
-    CBPeripheral      *_currentPeripheral;
+    
     
     void (^_connectedCompleteBlock)(BOOL success);
 }
@@ -39,48 +41,50 @@ const static NSString* kUartServiceUUID = @"FFE0";
 - (instancetype)init {
   self = [super init];
   if (self) {
-    _discoverDevList = [NSMutableArray new];
-    _connectedDevList = [NSMutableArray new];
-    _currentPeripheral = nil;
-    _bleQueue =  dispatch_queue_create("kCH2OBLEQueue", DISPATCH_QUEUE_SERIAL);
-    _bldManager = [[CBCentralManager alloc] initWithDelegate:self queue:_bleQueue];
+    //_discoverDevList = [NSMutableArray new];
+    //_connectedDevList = [NSMutableArray new];
+      self.currentPeripheral = nil;
+      self.ppaValue = nan(NULL);
+      self.volValue = nan(NULL);
+      _bleQueue =  dispatch_queue_create("kCH2OBLEQueue", DISPATCH_QUEUE_SERIAL);
+      self.bleManager = [[CBCentralManager alloc] initWithDelegate:self queue:_bleQueue];
   }
   return self;
 }
 
 - (BOOL)start {
-  if (_bldManager.state == CBCentralManagerStatePoweredOn) {
-    [_bldManager scanForPeripheralsWithServices:nil options:nil];
+  if (self.bleManager.state == CBCentralManagerStatePoweredOn) {
+    [self.bleManager scanForPeripheralsWithServices:nil options:nil];
     return YES;
   }
   return NO;
 }
 
 - (void)stop {
-    [_bldManager stopScan];
+    [self.bleManager stopScan];
+    self.ppaValue = nan(NULL);
+    self.volValue = nan(NULL);
 }
 
 - (void)connectToPeripheral:(CBPeripheral *)peripheral {
-    [_bldManager connectPeripheral:peripheral options:nil];
+    [self.bleManager connectPeripheral:peripheral options:nil];
 }
 
-- (NSArray*)discoverDevList {
-    return _discoverDevList;
+- (void) detachPeripheral {
+    if (self.currentPeripheral) {
+        self.currentPeripheral.delegate = nil;
+    }
+    self.currentPeripheral = nil;
+    self.ppaValue = nan(NULL);
+    self.volValue = nan(NULL);
 }
 
-- (NSArray*)connectedDevList {
-    return _connectedDevList;
-}
-
-- (CBPeripheral*)currentPeripheral {
-    return _currentPeripheral;
-}
-
-- (void)setCurrentPeripheral:(CBPeripheral *)peripheral {
-    _currentPeripheral = peripheral;
-    _currentPeripheral.delegate = self;
-    [_currentPeripheral discoverServices:@[[CBUUID UUIDWithString:kUartServiceUUID],
-                                            ]];
+- (void) attachPeripheral:(CBPeripheral *)peripheral {
+    self.currentPeripheral = peripheral;
+    self.currentPeripheral.delegate = self;
+    CBUUID * uuid = [CBUUID UUIDWithString:kUartServiceUUID];
+    NSArray * services = @[uuid];
+    [self.currentPeripheral discoverServices: services];
 }
 
 #pragma mark - CBCentralManagerDelegate
@@ -95,9 +99,11 @@ const static NSString* kUartServiceUUID = @"FFE0";
         case CBCentralManagerStateUnauthorized:
         case CBCentralManagerStatePoweredOff:
             break;
-        case CBCentralManagerStatePoweredOn:
-            [_bldManager scanForPeripheralsWithServices:nil options:nil];
+        case CBCentralManagerStatePoweredOn: {
+            //CBUUID * uuid = [CBUUID UUIDWithString:@"FFE0"];
+            [self.bleManager scanForPeripheralsWithServices:nil options:nil];
             break;
+        }
         default:
             break;
     }
@@ -109,14 +115,9 @@ const static NSString* kUartServiceUUID = @"FFE0";
      advertisementData:(NSDictionary *)advertisementData
                   RSSI:(NSNumber *)RSSI {
     
-    NSLog(@"discover peripheral: %@", peripheral.identifier);
+    NSLog(@"discover peripheral: %@ uuid:%@", peripheral.name, peripheral.identifier);
     if (peripheral.state == CBPeripheralStateDisconnected) { // 未连接
-        if ([_connectedDevList containsObject:peripheral]) { // remove from connected list
-            [_connectedDevList removeObject:peripheral];
-        }
-        if (![_discoverDevList containsObject:peripheral]) { // add to discover list
-            [_discoverDevList addObject:peripheral];
-        }
+
         [[NSNotificationCenter defaultCenter] postNotificationName:kBLEManagerNotification
                                                             object:nil
                                                           userInfo:@{@"type":kBLEPeripheralDiscoveryNotify,
@@ -126,23 +127,21 @@ const static NSString* kUartServiceUUID = @"FFE0";
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     if (peripheral.state == CBPeripheralStateConnected) {
-        if ([_discoverDevList containsObject:peripheral]) { // remove from discover list
-            [_discoverDevList removeObject:peripheral];
+        if ([peripheral.name containsString:@"TAv22u"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kBLEManagerNotification
+                                                                object:nil
+                                                              userInfo:@{@"type":kBLEPeripheralConnectedNotify,
+                                                                         @"peripheral":peripheral}];
+            [self attachPeripheral:peripheral];
+        } else {
+            [central cancelPeripheralConnection: peripheral];
         }
-        if (![_connectedDevList containsObject:peripheral]) { // add to connected list
-            [_connectedDevList addObject:peripheral];
-        }
-        [[NSNotificationCenter defaultCenter] postNotificationName:kBLEManagerNotification
-                                                            object:nil
-                                                          userInfo:@{@"type":kBLEPeripheralConnectedNotify,
-                                                               @"peripheral":peripheral}];
+        
     }
 }
 
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-    if ([_connectedDevList containsObject:peripheral]) { // remove from connected list
-        [_connectedDevList removeObject:peripheral];
-    }
+    [self detachPeripheral];
     [[NSNotificationCenter defaultCenter] postNotificationName:kBLEManagerNotification
                                                         object:nil
                                                       userInfo:@{@"type":kBLEPeripheralDisconnectNotify,
@@ -150,9 +149,8 @@ const static NSString* kUartServiceUUID = @"FFE0";
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-    if ([_connectedDevList containsObject:peripheral]) { // remove from connected list
-        [_connectedDevList removeObject:peripheral];
-    }
+
+    [self detachPeripheral];
     [[NSNotificationCenter defaultCenter] postNotificationName:kBLEManagerNotification
                                                         object:nil
                                                       userInfo:@{@"type":kBLEPeripheralDisconnectNotify,
@@ -191,6 +189,8 @@ const static NSString* kUartServiceUUID = @"FFE0";
         if (ptr[0] == 0xff && ptr[1] == 0x17) {
             uint16_t value = (ptr[4] << 8) | ptr[5];
             NSLog(@"value: %d", value);
+            self.ppaValue = ((double)value) / 1000.0;
+            self.volValue = self.ppaValue * 30.0 / 22.4;
             [[NSNotificationCenter defaultCenter] postNotificationName:kBLEManagerNotification
                                                                 object:nil
                                                               userInfo:@{@"type":kBLEPeripheralRecvValueNotify,
