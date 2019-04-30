@@ -19,6 +19,8 @@
 
 @property (nonatomic, assign) double ppaValue;
 @property (nonatomic, assign) double volValue;
+@property (nonatomic, assign) double ppaMax;
+@property (nonatomic, assign) double volMax;
 
 + (instancetype)shareInstance;
 - (BOOL)start;

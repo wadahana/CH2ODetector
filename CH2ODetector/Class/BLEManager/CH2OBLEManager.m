@@ -23,8 +23,7 @@ const static NSString* kUartServiceUUID = @"FFE0";
 @implementation CH2OBLEManager {
     
     dispatch_queue_t  _bleQueue;
-    
-    
+
     void (^_connectedCompleteBlock)(BOOL success);
 }
 
@@ -46,6 +45,8 @@ const static NSString* kUartServiceUUID = @"FFE0";
       self.currentPeripheral = nil;
       self.ppaValue = nan(NULL);
       self.volValue = nan(NULL);
+      self.ppaMax = -100000.0;
+      self.volMax = -100000.0;
       _bleQueue =  dispatch_queue_create("kCH2OBLEQueue", DISPATCH_QUEUE_SERIAL);
       self.bleManager = [[CBCentralManager alloc] initWithDelegate:self queue:_bleQueue];
   }
@@ -191,6 +192,12 @@ const static NSString* kUartServiceUUID = @"FFE0";
             NSLog(@"value: %d", value);
             self.ppaValue = ((double)value) / 1000.0;
             self.volValue = self.ppaValue * 30.0 / 22.4;
+            if (self.ppaValue > self.ppaMax) {
+                self.ppaMax = self.ppaValue;
+            }
+            if (self.volValue > self.volMax) {
+                self.volMax = self.volValue;
+            }
             [[NSNotificationCenter defaultCenter] postNotificationName:kBLEManagerNotification
                                                                 object:nil
                                                               userInfo:@{@"type":kBLEPeripheralRecvValueNotify,

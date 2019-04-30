@@ -13,12 +13,10 @@
 #import "AppDelegate.h"
 
 @interface CH2ORootViewController ()
-
+@property (nonatomic, strong) MBProgressHUDManager * hudManager;
 @end
 
-@implementation CH2ORootViewController {
-  MBProgressHUDManager* _hudManager;
-}
+@implementation CH2ORootViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,12 +40,11 @@
   
     [[CH2OBLEManager shareInstance] start];
   
-    _hudManager = [[MBProgressHUDManager alloc] initWithView:self.view];
-    _hudManager.HUD.margin = 10.f;
-    _hudManager.HUD.opacity = 0.6;
-    _hudManager.HUD.yOffset = 0;
-    _hudManager.HUD.dimBackground = NO;
-    
+    self.hudManager = [[MBProgressHUDManager alloc] initWithView:self.view];
+    self.hudManager.HUD.margin = 10.f;
+    self.hudManager.HUD.opacity = 0.6;
+    self.hudManager.HUD.yOffset = 0;
+    self.hudManager.HUD.dimBackground = NO;
     
     [[NSNotificationCenter defaultCenter]  addObserver:self
                                               selector:@selector(onBLEManagerNotification:)
@@ -89,17 +86,10 @@
       dispatch_async(dispatch_get_main_queue(), ^{
           self.ppaLabel.text = @"-/-";
           self.volLabel.text = @"-/-";
-          /*
-          if (!self.timer) {
-              self.timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
-          }
-          self.ppaValue = nan(NULL);
-          self.volValue = nan(NULL);
-          if (self.timer) {
-              [self.timer invalidate];
-              self.timer = nil;
-          }
-           */
+          [self.recordButton setTitle:@"开始记录" forState:UIControlStateNormal];
+          __weak AppDelegate * appDeleage = (AppDelegate *)[UIApplication sharedApplication].delegate;
+          appDeleage.recording = NO;
+          [self.hudManager showMessage:@"传感器已断开" duration:1];
       });
   }
   return;
@@ -116,12 +106,17 @@
         [self.recordButton setTitle:@"开始记录" forState:UIControlStateNormal];
         appDeleage.recording = NO;
     } else {
-        [self.recordButton setTitle:@"停止记录" forState:UIControlStateNormal];
-        appDeleage.recording = YES;
+        if ([CH2OBLEManager shareInstance].currentPeripheral) {
+            [self.recordButton setTitle:@"停止记录" forState:UIControlStateNormal];
+            appDeleage.recording = YES;
+        } else {
+            [self.hudManager showMessage:@"请先连接传感器" duration:1];
+        }
     }
 }
 - (IBAction)onClear:(id)sender {
     [[CH2ODBHelper shareInstance] removeAllRecords];
+    [self.hudManager showMessage:@"清除数据!" duration:1];
 }
 - (IBAction)onHistory:(id)sender {
   [[CH2ONavigationManager shareInstance] navigateToHistoryView];

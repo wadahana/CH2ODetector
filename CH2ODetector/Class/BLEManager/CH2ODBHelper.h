@@ -16,7 +16,7 @@
 
 - (void) start;
 
-- (BOOL) write:(double) ppa vol:(double) vol;
+- (BOOL) writePpa:(double) ppa ppaMax:(double) ppaMax vol:(double) vol volMax:(double)volMax;
 
 - (BOOL) removeAllRecords;
 @end

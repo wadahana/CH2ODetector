@@ -59,7 +59,9 @@
     NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ ("
                      "timestamp Date PRIMARY KEY, "
                      "ppa REAL NOT NULL, "
-                     "vol REAL NOT NULL);", @"ch2o_monitor"];
+                     "vol REAL NOT NULL, "
+                     "ppaMax REAL NOT NULL, "
+                     "volMax REAL NOT NULL);", @"ch2o_monitor"];
     if ([_fmdb executeUpdate:sql]) {
         NSLog(@"%@ 建表成功", @"ch2o_monitor");
         return YES;
@@ -69,9 +71,11 @@
     }
 }
 
-- (BOOL)write:(double) ppa vol:(double) vol {
+- (BOOL) writePpa:(double) ppa
+           ppaMax:(double) ppaMax
+              vol:(double) vol
+           volMax:(double)volMax {
     NSDate * now = [NSDate new];
-   
     if (_fmdb) {
         NSMutableString *query = [NSMutableString stringWithFormat:@"INSERT INTO %@",@"ch2o_monitor"];
         NSMutableString *keys = [NSMutableString stringWithFormat:@" ("];
@@ -90,12 +94,21 @@
         [values appendString:@"?,"];
         [arguments addObject:@(vol)];
         
+        [keys appendString:@"ppaMax,"];
+        [values appendString:@"?,"];
+        [arguments addObject:@(ppaMax)];
+        
+        [keys appendString:@"volMax,"];
+        [values appendString:@"?,"];
+        [arguments addObject:@(volMax)];
+        
         [keys appendString:@")"];
         [values appendString:@")"];
         [query appendFormat:@" %@ VALUES%@",
             [keys stringByReplacingOccurrencesOfString:@",)" withString:@")"],
             [values stringByReplacingOccurrencesOfString:@",)" withString:@")"]];
-        NSLog(@"write timestamp(%@), ppa(%0.4lf), vol(%0.4lf)", now, ppa, vol);
+        
+        NSLog(@"write timestamp(%@), ppa(%0.4lf), ppaMax(%0.4lf)", now, ppa, ppaMax);
         return [_fmdb executeUpdate:query withArgumentsInArray:arguments];
     }
     return NO;

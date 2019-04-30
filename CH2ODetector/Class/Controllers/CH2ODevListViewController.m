@@ -71,8 +71,10 @@
         if ([type isEqual:kBLEPeripheralDiscoveryNotify]) {
             CBPeripheral * peripheral = [useinfo objectForKey:@"peripheral"];
             if (peripheral) {
-                [self.discoverPeripheraArray addObject:peripheral];
-                [self.tableView reloadData];
+                if (![self.discoverPeripheraArray containsObject:peripheral]) {
+                    [self.discoverPeripheraArray addObject:peripheral];
+                    [self.tableView reloadData];
+                }
             }
         } else if ([type isEqual:kBLEPeripheralConnectedNotify]) {
             CBPeripheral * peripheral = [useinfo objectForKey:@"peripheral"];

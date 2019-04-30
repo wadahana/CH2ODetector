@@ -17,12 +17,12 @@
 @interface AppDelegate ()
 @property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundTaskIdentifier;
 @property (nonatomic, strong) AVAudioPlayer * player;
+@property (nonatomic, assign) NSTimeInterval timeInterval;
 @end
 
 @implementation AppDelegate {
     BOOL _recording;
 }
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
@@ -35,6 +35,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
+    self.timeInterval = 20;
     _recording = NO;
   return YES;
 }
@@ -79,9 +80,19 @@
     double ppa = [CH2OBLEManager shareInstance].ppaValue;
     double vol = [CH2OBLEManager shareInstance].volValue;
     NSLog(@"[AppDelegate onTimer:] -> ppaValue: %0.4lf; volValue: %0.4lf\n", ppa, vol);
-    if (_recording && !isnan(ppa) && !isnan(vol)) {
-        [[CH2ODBHelper shareInstance] write:ppa vol:vol];
+    if (![CH2OBLEManager shareInstance].currentPeripheral) {
+        [self setRecording:NO];
+        [self.player stop];
+        return;
     }
+    if (_recording && !isnan(ppa) && !isnan(vol)) {
+        [[CH2ODBHelper shareInstance] writePpa:ppa
+                                     ppaMax:[CH2OBLEManager shareInstance].ppaMax
+                                        vol:vol
+                                     volMax:[CH2OBLEManager shareInstance].volMax];
+    }
+    [CH2OBLEManager shareInstance].ppaMax = -1000.0;
+    [CH2OBLEManager shareInstance].volMax = -1000.0;
     if (self.backgroundTaskIdentifier != UIBackgroundTaskInvalid) {
         NSTimeInterval remainTime = [UIApplication sharedApplication].backgroundTimeRemaining;
         if (remainTime < 1000000000) {
@@ -89,7 +100,7 @@
         } else {
             NSLog(@"[AppDelegate onTimer:] -> remainTime(+inf)\n");
         }
-        if (remainTime < 60) {
+        if (remainTime < self.timeInterval) {
             [self setRecording:NO];
         }
     }
@@ -110,7 +121,7 @@
                 self.timer = nil;
             }
             // create recording timer.
-            self.timer = [NSTimer scheduledTimerWithTimeInterval:60
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:self.timeInterval
                                                           target:self
                                                         selector:@selector(onTimer:)
                                                         userInfo:nil
